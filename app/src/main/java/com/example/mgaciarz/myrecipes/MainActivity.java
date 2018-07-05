@@ -1,6 +1,5 @@
 package com.example.mgaciarz.myrecipes;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -49,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Editable searchVal = foodText.getText();
 
-                new APIHelper(MainActivity.this).execute(searchVal.toString());
+                new JSONDownloader(MainActivity.this).execute(searchVal.toString());
 
             }
         });

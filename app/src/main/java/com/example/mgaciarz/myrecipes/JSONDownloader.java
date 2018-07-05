@@ -25,11 +25,8 @@ import javax.xml.transform.Result;
 /**
  * Created by mgaciarz on 2018-04-26.
  */
-// api key: 01845a3affe15c5a70fc5c577c885a3a
-// search request: http://food2fork.com/api/search
-// recipe request: http://food2fork.com/api/get
 
-public class APIHelper extends AsyncTask<String, Void, String>  {
+public class JSONDownloader extends AsyncTask<String, Void, String>  {
 
     private static final String api_key = "049db384fe3482e5b84f42eeef60c689";
     private static final String app_id = "db40cd3e";
@@ -38,7 +35,7 @@ public class APIHelper extends AsyncTask<String, Void, String>  {
 
 
     Context context;
-    public APIHelper(Context context){
+    public JSONDownloader(Context context){
         this.context= context;
     }
 
@@ -84,9 +81,6 @@ public class APIHelper extends AsyncTask<String, Void, String>  {
 
     protected void onPostExecute(String result) {
 
-        //TextView debugText = mainActivity.findViewById(R.id.DebugText);
-
-        //debugText.setText(result);
         Intent i = new Intent(context,ResultActivity.class);
         i.putExtra("searchValues", result);
         context.startActivity(i);
