@@ -1,5 +1,7 @@
 package com.example.mgaciarz.myrecipes;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
@@ -30,6 +32,7 @@ import models.Recipe;
 public class ResultActivity extends AppCompatActivity {
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,11 +43,11 @@ public class ResultActivity extends AppCompatActivity {
         if (extras != null) {
             String json = extras.getString("searchValues");
 
-            List<Recipe> recipes = new JSONObjectWrapper().getRecipes(json);
+            final List<Recipe> recipes = new JSONObjectWrapper().getRecipes(json);
 
             ListView list;
 
-            list = (ListView) findViewById(R.id.list);
+            list = findViewById(R.id.list);
 
             ListAdapter adapter = new ListAdapter(this, recipes);
 
@@ -60,9 +63,18 @@ public class ResultActivity extends AppCompatActivity {
 
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Toast.makeText(getApplicationContext(),
-                            "Click ListItem Number " + position, Toast.LENGTH_LONG)
-                            .show();
+//                    Toast.makeText(getApplicationContext(),
+//                            "Click ListItem Number " + position, Toast.LENGTH_SHORT)
+//                            .show();
+
+
+                    //start new activity for seeing one dish and pass recipe to it
+                    Intent i = new Intent(getApplicationContext(),SingleDishActivity.class);
+
+                    i.putExtra("recipe", recipes.get(position));
+                    i.putExtra("position", position);
+
+                    getApplicationContext().startActivity(i);
                 }
             });
         }

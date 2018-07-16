@@ -21,7 +21,7 @@ public class ListAdapter extends BaseAdapter {
 
     private Activity activity;
     private static LayoutInflater inflater=null;
-    List<Recipe> recipes;
+    private List<Recipe> recipes;
 
     @Override
     public int getCount() {
@@ -59,14 +59,11 @@ public class ListAdapter extends BaseAdapter {
         Recipe recipe = recipes.get(position);
 
 
-        //load
         dishName.setText(recipe.getLabel());
         dishDesc.setText(recipe.getInstructionURL());
 
-        //strip URL from one pair of additional quites ("")
-        String strippedURL =  recipe.getImageURL().replaceAll("^\"|\"$", "");
-
-        Picasso.get().load(strippedURL).into(dishImage);
+        //download image directly into ImageView
+        Picasso.get().load(recipe.getImageURL()).into(dishImage);
 
 
         return vi;

@@ -1,5 +1,9 @@
 package models;
 
+
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -7,11 +11,13 @@ import java.util.List;
  * Created by mgaciarz on 2018-06-07.
  */
 
-public class Recipe {
+public class Recipe implements Parcelable {
 
     private String label;
 
     private String imageURL;
+
+    private String instructionURL;
 
     private long id;
 
@@ -30,8 +36,6 @@ public class Recipe {
         this.id = id;
 
     }
-
-    private String instructionURL;
 
     public String getLabel() {
         return label;
@@ -56,4 +60,38 @@ public class Recipe {
     public void setInstructionURL(String instructionURL) {
         this.instructionURL = instructionURL;
     }
+
+
+    protected Recipe(Parcel in) {
+        label = in.readString();
+        imageURL = in.readString();
+        instructionURL = in.readString();
+        id = in.readLong();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(label);
+        dest.writeString(imageURL);
+        dest.writeString(instructionURL);
+        dest.writeLong(id);
+    }
+
+    @SuppressWarnings("unused")
+    public static final Parcelable.Creator<Recipe> CREATOR = new Parcelable.Creator<Recipe>() {
+        @Override
+        public Recipe createFromParcel(Parcel in) {
+            return new Recipe(in);
+        }
+
+        @Override
+        public Recipe[] newArray(int size) {
+            return new Recipe[size];
+        }
+    };
 }

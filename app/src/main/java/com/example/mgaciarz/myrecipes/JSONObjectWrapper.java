@@ -12,6 +12,10 @@ import models.Recipe;
 
 public class JSONObjectWrapper {
 
+    private String stripQuotes(String toStrip){
+        return toStrip.replaceAll("^\"|\"$", "");
+    }
+
     public List<Recipe> getRecipes(String JSON){
 
         ArrayList<Recipe> recipes = new ArrayList<>();
@@ -33,9 +37,11 @@ public class JSONObjectWrapper {
 
                 JsonObject currentRecipe = (JsonObject) currentRecipeObject.get("recipe");
 
-                String label = currentRecipe.get("label").toString();
-                String recipeUri = currentRecipe.get("uri").toString();
-                String imageUri = currentRecipe.get("image").toString();
+                //stripping additional pair of quotes from around downloaded data
+                String label = stripQuotes(currentRecipe.get("label").toString());
+                String recipeUri = stripQuotes(currentRecipe.get("uri").toString());
+                String imageUri = stripQuotes(currentRecipe.get("image").toString());
+
 
                 Recipe recipe = new Recipe(label, imageUri, recipeUri, i);
 

@@ -14,7 +14,6 @@ public class MainActivity extends AppCompatActivity {
 
     Button searchButton;
     EditText foodText;
-    TextView DebugText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
 
         searchButton = findViewById(R.id.SearchButton);
         foodText = findViewById(R.id.FoodText);
-        DebugText = findViewById(R.id.DebugText);
 
 
         foodText.setFilters(new InputFilter[] {
