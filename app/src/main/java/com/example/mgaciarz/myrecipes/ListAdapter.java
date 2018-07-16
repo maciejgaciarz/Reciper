@@ -25,18 +25,19 @@ public class ListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 0;
+        return recipes.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return recipes.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return 0;
-    }
+
+            return recipes.get(position).getId();
+        }
 
     public ListAdapter(Activity activity, List<Recipe> recipes) {
         this.activity = activity;
@@ -61,7 +62,11 @@ public class ListAdapter extends BaseAdapter {
         //load
         dishName.setText(recipe.getLabel());
         dishDesc.setText(recipe.getInstructionURL());
-        Picasso.get().load(recipe.getImageURL()).into(dishImage);
+
+        //strip URL from one pair of additional quites ("")
+        String strippedURL =  recipe.getImageURL().replaceAll("^\"|\"$", "");
+
+        Picasso.get().load(strippedURL).into(dishImage);
 
 
         return vi;

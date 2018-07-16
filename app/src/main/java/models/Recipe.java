@@ -13,10 +13,22 @@ public class Recipe {
 
     private String imageURL;
 
-    public Recipe(String label, String imageURL, String instructionURL) {
+    private long id;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Recipe(String label, String imageURL, String instructionURL, long id) {
         this.label = label;
         this.imageURL = imageURL;
         this.instructionURL = instructionURL;
+        this.id = id;
+
     }
 
     private String instructionURL;

@@ -37,7 +37,7 @@ public class JSONObjectWrapper {
                 String recipeUri = currentRecipe.get("uri").toString();
                 String imageUri = currentRecipe.get("image").toString();
 
-                Recipe recipe = new Recipe(label, imageUri, recipeUri);
+                Recipe recipe = new Recipe(label, imageUri, recipeUri, i);
 
                 recipes.add(recipe);
             }
