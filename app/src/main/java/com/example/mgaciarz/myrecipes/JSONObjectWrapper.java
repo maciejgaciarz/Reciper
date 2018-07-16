@@ -20,9 +20,7 @@ public class JSONObjectWrapper {
 
             JsonParser jsonParser = new JsonParser();
 
-            Object object;
-
-            object = jsonParser.parse(JSON);
+            Object object = jsonParser.parse(JSON);
 
             JsonObject jsonObject = (JsonObject) object;
 

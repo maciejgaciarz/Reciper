@@ -30,14 +30,10 @@ import models.Recipe;
 public class ResultActivity extends AppCompatActivity {
 
 
-    ListView list;
-    ListAdapter adapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
-
 
 
         Bundle extras = getIntent().getExtras();
@@ -46,9 +42,11 @@ public class ResultActivity extends AppCompatActivity {
 
             List<Recipe> recipes = new JSONObjectWrapper().getRecipes(json);
 
-            list = findViewById(R.id.list);
+            ListView list;
 
-            adapter = new ListAdapter(this, recipes);
+            list = (ListView) findViewById(R.id.list);
+
+            ListAdapter adapter = new ListAdapter(this, recipes);
 
             if(adapter!=null){
                 list.setAdapter(adapter);
@@ -62,7 +60,9 @@ public class ResultActivity extends AppCompatActivity {
 
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                    Toast.makeText(getApplicationContext(),
+                            "Click ListItem Number " + position, Toast.LENGTH_LONG)
+                            .show();
                 }
             });
         }
