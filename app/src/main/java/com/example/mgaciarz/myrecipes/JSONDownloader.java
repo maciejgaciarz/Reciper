@@ -39,9 +39,8 @@ public class JSONDownloader extends AsyncTask<String, Void, String> {
     JSONDownloader(Context context) {
         this.context = context;
         this.api_key = context.getResources().getString(R.string.api_key);
-        this.app_id  = context.getResources().getString(R.string.app_id);
+        this.app_id = context.getResources().getString(R.string.app_id);
     }
-
 
 
     protected String doInBackground(String... params) {
