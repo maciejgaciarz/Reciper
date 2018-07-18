@@ -20,7 +20,7 @@ import models.Recipe;
 public class ListAdapter extends BaseAdapter {
 
     private Activity activity;
-    private static LayoutInflater inflater=null;
+    private static LayoutInflater inflater = null;
     private List<Recipe> recipes;
 
     @Override
@@ -36,25 +36,26 @@ public class ListAdapter extends BaseAdapter {
     @Override
     public long getItemId(int position) {
 
-            return recipes.get(position).getId();
-        }
+        return recipes.get(position).getId();
+    }
 
     public ListAdapter(Activity activity, List<Recipe> recipes) {
         this.activity = activity;
-        inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.recipes = recipes;
     }
+
     @Override
-    public View getView(int position, View convertView, ViewGroup parent){
+    public View getView(int position, View convertView, ViewGroup parent) {
 
-        View vi=convertView;
-        if(convertView==null)
-            vi = inflater.inflate(R.layout.list_row, parent,false);
-            //vi = inflater.inflate(R.layout.list_row, null);
+        View vi = convertView;
+        if (convertView == null)
+            vi = inflater.inflate(R.layout.list_row, parent, false);
+        //vi = inflater.inflate(R.layout.list_row, null);
 
-        TextView dishName = (TextView)vi.findViewById(R.id.dishName);
-        TextView dishDesc = (TextView)vi.findViewById(R.id.dishDescription);
-        ImageView dishImage =(ImageView) vi.findViewById(R.id.dishImage);
+        TextView dishName = (TextView) vi.findViewById(R.id.dishName);
+        TextView dishDesc = (TextView) vi.findViewById(R.id.dishDescription);
+        ImageView dishImage = (ImageView) vi.findViewById(R.id.dishImage);
 
         Recipe recipe = recipes.get(position);
 

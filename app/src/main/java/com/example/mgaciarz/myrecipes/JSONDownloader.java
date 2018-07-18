@@ -26,27 +26,31 @@ import javax.xml.transform.Result;
  * Created by mgaciarz on 2018-04-26.
  */
 
-public class JSONDownloader extends AsyncTask<String, Void, String>  {
+public class JSONDownloader extends AsyncTask<String, Void, String> {
 
 
-    Context context;
-    public JSONDownloader(Context context){
-        this.context= context;
+    private Context context;
+    private String api_key;
+    private String app_id;
+
+    private final String searchRequestURL = "https://api.edamam.com/search?q=";
+
+
+    JSONDownloader(Context context) {
+        this.context = context;
+        this.api_key = context.getResources().getString(R.string.api_key);
+        this.app_id  = context.getResources().getString(R.string.app_id);
     }
 
-    private final String api_key =  context.getResources().getString(R.string.api_key);
-    private final String app_id = context.getResources().getString(R.string.app_id);
-    private final String searchRequestURL = "https://api.edamam.com/search?q=";
 
 
     protected String doInBackground(String... params) {
 
 
-
         String liveUpdateUrl = searchRequestURL + params[0] + "&app_id=" + app_id + "&app_key=" + api_key;
         HttpsURLConnection con;
         InputStream in = null;
-        String result="";
+        String result = "";
         try {
             JSONObject jObj = null;
 
@@ -75,18 +79,16 @@ public class JSONDownloader extends AsyncTask<String, Void, String>  {
             e.printStackTrace();
             return new String("error");
         }
-          return result;
+        return result;
 
     }
 
     protected void onPostExecute(String result) {
 
-        Intent i = new Intent(context,ResultActivity.class);
+        Intent i = new Intent(context, ResultActivity.class);
         i.putExtra("searchValues", result);
         context.startActivity(i);
     }
-
-
 
 
 }

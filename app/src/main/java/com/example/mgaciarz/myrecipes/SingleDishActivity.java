@@ -31,14 +31,12 @@ public class SingleDishActivity extends AppCompatActivity {
             Picasso.get().load(recipe.getImageURL()).into(dishImage);
             dishDesc.setText(recipe.getInstructionURL());
 
-        }
-        else{
+        } else {
             //todo: throw some error that extras are empty
         }
 
 
     }
-
 
 
 }

@@ -25,14 +25,14 @@ public class MainActivity extends AppCompatActivity {
         foodText = findViewById(R.id.FoodText);
 
 
-        foodText.setFilters(new InputFilter[] {
+        foodText.setFilters(new InputFilter[]{
                 new InputFilter() {
                     public CharSequence filter(CharSequence src, int start,
                                                int end, Spanned dst, int dstart, int dend) {
-                        if(src.equals("")){ // for backspace
+                        if (src.equals("")) { // for backspace
                             return src;
                         }
-                        if(src.toString().matches("[a-zA-Z ]+")){
+                        if (src.toString().matches("[a-zA-Z ]+")) {
                             return src;
                         }
                         return "";
