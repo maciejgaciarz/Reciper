@@ -32,6 +32,9 @@ public class SingleDishActivity extends AppCompatActivity {
             dishDesc.setText(recipe.getInstructionURL());
 
         }
+        else{
+            //todo: throw some error that extras are empty
+        }
 
 
     }

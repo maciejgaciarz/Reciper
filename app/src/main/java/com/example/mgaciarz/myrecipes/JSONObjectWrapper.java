@@ -12,6 +12,7 @@ import models.Recipe;
 
 public class JSONObjectWrapper {
 
+    //function that strips " sign from beginning and end of string
     private String stripQuotes(String toStrip){
         return toStrip.replaceAll("^\"|\"$", "");
     }

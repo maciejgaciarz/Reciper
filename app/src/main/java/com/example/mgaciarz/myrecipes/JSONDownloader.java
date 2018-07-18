@@ -28,20 +28,20 @@ import javax.xml.transform.Result;
 
 public class JSONDownloader extends AsyncTask<String, Void, String>  {
 
-    private static final String api_key = "049db384fe3482e5b84f42eeef60c689";
-    private static final String app_id = "db40cd3e";
-    private static final String searchRequestURL = "https://api.edamam.com/search?q=";
-
-
 
     Context context;
     public JSONDownloader(Context context){
         this.context= context;
     }
 
+    private final String api_key =  context.getResources().getString(R.string.api_key);
+    private final String app_id = context.getResources().getString(R.string.app_id);
+    private final String searchRequestURL = "https://api.edamam.com/search?q=";
 
 
     protected String doInBackground(String... params) {
+
+
 
         String liveUpdateUrl = searchRequestURL + params[0] + "&app_id=" + app_id + "&app_key=" + api_key;
         HttpsURLConnection con;

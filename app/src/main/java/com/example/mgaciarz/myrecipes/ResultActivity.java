@@ -32,7 +32,6 @@ import models.Recipe;
 public class ResultActivity extends AppCompatActivity {
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,11 +50,10 @@ public class ResultActivity extends AppCompatActivity {
 
             ListAdapter adapter = new ListAdapter(this, recipes);
 
-            if(adapter!=null){
+            if (adapter != null) {
                 list.setAdapter(adapter);
                 Toast.makeText(getApplicationContext(), "Adapter found!", Toast.LENGTH_SHORT).show();
-            }
-            else{
+            } else {
                 Toast.makeText(getApplicationContext(), "Adapter not found", Toast.LENGTH_SHORT).show();
             }
 
@@ -69,7 +67,7 @@ public class ResultActivity extends AppCompatActivity {
 
 
                     //start new activity for seeing one dish and pass recipe to it
-                    Intent i = new Intent(getApplicationContext(),SingleDishActivity.class);
+                    Intent i = new Intent(getApplicationContext(), SingleDishActivity.class);
 
                     i.putExtra("recipe", recipes.get(position));
                     i.putExtra("position", position);

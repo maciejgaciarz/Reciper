@@ -65,7 +65,6 @@ public class ListAdapter extends BaseAdapter {
         //download image directly into ImageView
         Picasso.get().load(recipe.getImageURL()).into(dishImage);
 
-
         return vi;
     }
 
